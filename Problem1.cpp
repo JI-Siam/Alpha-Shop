@@ -31,7 +31,7 @@ using namespace std;
             float getPayment(){
                 return payment;
             }
-            void showInfo(){
+            void showEmployeeInfo(){
             cout<<"Employee Name:"<<name<<endl;
             cout<<"Employee ID:"<<id<<endl;
             cout<<"Employee Payment Amount:"<<payment<<endl;
@@ -58,8 +58,10 @@ using namespace std;
     }
     void showWorkerInfo(){
         cout<<"Employee Type:Worker"<<endl;
-        showInfo();
-        cout<<"Total Income:"<<TotalIncome()<<endl;
+        showEmployeeInfo();
+        cout<<"<Per Extra Hour Payment 200 Taka>"<<endl;
+        cout<<"Total Extra Hour Work Done : "<<extraHours<<" hr"<<endl;
+        cout<<"Worker Total Income:"<<TotalIncome()<<endl;
 
     }
     };
@@ -70,6 +72,18 @@ using namespace std;
         Vendor(){}
         Vendor(float d){
             deductionPercentage=d;
+        }
+        void setName(string n){
+            name=n;
+        }
+        string getName(){
+            return name;
+        }
+        void setId(int i){
+            id=i;
+        }
+    int getId(){
+            return id;
         }
         void setDeductionPercentage(float d){
             deductionPercentage=d;
@@ -83,9 +97,11 @@ using namespace std;
             return totalIncome;
         }
         void showVendorInfo(){
+
             cout<<"Employee Type:Vendor"<<endl;
-            showInfo();
-            cout<<"Total Income:"<<TotalIncome()<<endl;
+            showEmployeeInfo();
+            cout<<"Delay Deduction: "<<deductionPercentage<<"%"<<endl;
+            cout<<"Vendor Total Income:"<<TotalIncome()<<endl;
 
         }
 
@@ -101,11 +117,10 @@ using namespace std;
 
 
         Employee e1;
-        Vendor v1;
         string Wname;
-        string Vname;
-        int Wid,Vid;
-        float Wpay,Vpay;
+
+        int Wid;
+        float Wpay;
         cout<<"\t\t\tEnter The Worker Name:";
         getline(cin,Wname);
         cout<<"\t\t\tEnter Worker ID:";
@@ -130,11 +145,14 @@ using namespace std;
         w1.showWorkerInfo();
 
          cout<<"\n\n";
-
+         string Vname;
         cout<<"\t\t\tEnter The Vendor Name:";
+        cin.ignore();
        getline(cin,Vname);
+       int Vid;
         cout<<"\t\t\tEnter Vendor ID:";
         cin>>Vid;
+        double Vpay;
         cout<<"\t\t\tEnter Vendor Payment Amount:";
         cin>>Vpay;
         cout<<"\t\t\tDo the Vendor have any Delay Delivery?"<<endl;
@@ -147,6 +165,7 @@ using namespace std;
             cin>>Vextra;
 
         }
+        Vendor v1;
 
          cout<<"\n\n";
         v1.setName(Vname);
